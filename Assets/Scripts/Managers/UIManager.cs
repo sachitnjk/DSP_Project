@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameObject PresenterPanel;
 	[SerializeField] private GameObject AttendeePanel;
 
-	public int meetingsAttendedByAI{get; set;}
+	public int meetingsAttendedByAI{get; private set;}
 	public List<GameObject> AIAttendedMeetingsText = new List<GameObject>();
 	public List<GameObject> AIAttendedMeetingsButtons = new List<GameObject>();
 	private bool hasStarted;
