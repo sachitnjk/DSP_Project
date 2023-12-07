@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class DeskPointController : MonoBehaviour
 {
-	public bool isOccupied {  get; set; }
-
 	private PlayerInteraction playerInteraction;
-
-	private void Start()
-	{
-		isOccupied = false;
-	}
 
 	private void OnTriggerEnter(Collider other)
 	{

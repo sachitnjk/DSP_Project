@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1746913157}
     m_Modifications:
+    - target: {fileID: 7427471419186601161, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
+      propertyPath: targetDeskPoint
+      value: 
+      objectReference: {fileID: 459403561}
     - target: {fileID: 8187559532460095514, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -314,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7793821435062699234, guid: 91ae0724ae38e7645a9ed67caf0240b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.78
+      value: -4.77
       objectReference: {fileID: 0}
     - target: {fileID: 7793821435062699234, guid: 91ae0724ae38e7645a9ed67caf0240b7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -644,6 +648,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1746913157}
     m_Modifications:
+    - target: {fileID: 7427471419186601161, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
+      propertyPath: targetDeskPoint
+      value: 
+      objectReference: {fileID: 1921078678}
     - target: {fileID: 8187559532460095514, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -950,6 +958,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1746913157}
     m_Modifications:
+    - target: {fileID: 7427471419186601161, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
+      propertyPath: targetDeskPoint
+      value: 
+      objectReference: {fileID: 1913110798}
     - target: {fileID: 8187559532460095514, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1021,6 +1033,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1746913157}
     m_Modifications:
+    - target: {fileID: 7427471419186601161, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
+      propertyPath: targetDeskPoint
+      value: 
+      objectReference: {fileID: 1916844898}
     - target: {fileID: 8187559532460095514, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2188,6 +2204,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1746913157}
     m_Modifications:
+    - target: {fileID: 7427471419186601161, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
+      propertyPath: targetDeskPoint
+      value: 
+      objectReference: {fileID: 875771290}
     - target: {fileID: 8187559532460095514, guid: 37d361f2b6efc994c957e3a7e2a4860e, type: 3}
       propertyPath: m_RootOrder
       value: 0

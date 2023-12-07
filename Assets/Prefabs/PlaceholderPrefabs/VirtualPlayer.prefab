@@ -261,6 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8187559532460095514}
   - component: {fileID: 1421725927913724730}
+  - component: {fileID: 7427471419186601161}
   m_Layer: 0
   m_Name: VirtualPlayer
   m_TagString: Untagged
@@ -298,3 +299,16 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7427471419186601161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8187559532460095515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1af38039d035dd409430910df1fb307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetDeskPoint: {fileID: 0}
