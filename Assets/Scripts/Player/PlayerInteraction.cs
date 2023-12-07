@@ -8,20 +8,18 @@ public class PlayerInteraction : MonoBehaviour
 	private PlayerInput playerInput;
 	private InputAction interactionAction;
 	private InputAction tabAction;
+	private InputAction debugAction;
 
 	[SerializeField] private PlayerCameraFP playerCamera;
+	[SerializeField] GameObject virtualPlayerPrefab;
+
 	private PlayerMovementFP playerMove;
 	private GameManager gameManager;
 
-	private Transform interactionPoint;
-	private Transform otherDeskPoint;
 
-	private GameObject virtualPlayerInstance;
-	[SerializeField] GameObject virtualPlayerPrefab;
-
-	public bool interactionAvailable { get; private set; }
+	public bool InteractionAvailable { get; set; }
+	public bool TabActive { get; private set; }
 	private bool interactionActive;
-	public bool TabActive{get; private set;}
 
 	private void Start()
 	{
@@ -32,18 +30,21 @@ public class PlayerInteraction : MonoBehaviour
 		{
 			interactionAction = playerInput.actions["Interact"];
 			tabAction = playerInput.actions["Tab"];
+			debugAction = playerInput.actions["DebugX"];
 		}
 
-		interactionAvailable = false;
 		interactionActive = false;
 		TabActive = false;
+		InteractionAvailable = false;
 	}
 
 	private void Update()
 	{
-		InteractionCheck();
 		TabCheck();
-		if(interactionActive || TabActive) 
+		InteractionCheck();
+		SpawnAI();
+
+		if (interactionActive || TabActive)
 		{
 			playerMove.CanMove = false;
 		}
@@ -51,16 +52,14 @@ public class PlayerInteraction : MonoBehaviour
 		{
 			playerMove.CanMove = true;
 		}
-		//Debug.Log(TabActive);
 	}
-
 	private void TabCheck()
 	{
-		if(tabAction.WasPerformedThisFrame())
+		if (tabAction.WasPerformedThisFrame())
 		{
 			TabActive = !TabActive;
 		}
-		if(TabActive)
+		if (TabActive)
 		{
 			Cursor.lockState = CursorLockMode.Confined;
 			playerCamera.enabled = false;
@@ -71,57 +70,28 @@ public class PlayerInteraction : MonoBehaviour
 			playerCamera.enabled = true;
 		}
 	}
-
 	private void InteractionCheck()
 	{
-		if(interactionAvailable && interactionAction.triggered && !interactionActive && !TabActive)
+		if(InteractionAvailable && interactionAction.WasPerformedThisFrame() && !interactionActive)
 		{
 			interactionActive = true;
-			transform.position = Vector3.Lerp(transform.position, interactionPoint.position, 2f);
-
-			otherDeskPoint = FindOtherDeskPoint();
-			if(otherDeskPoint != null )
-			{
-				virtualPlayerInstance = Instantiate(virtualPlayerPrefab, otherDeskPoint.position, Quaternion.identity);
-			}
+			playerMove.CanMove = false;
 		}
-		else if(interactionActive && interactionAction.triggered)
+		else if(interactionActive && interactionAction.WasPerformedThisFrame()) 
 		{
 			interactionActive = false;
-
-			if(virtualPlayerInstance != null) 
-			{
-				Destroy(virtualPlayerInstance);
-			}
-			otherDeskPoint = null;
+			playerMove.CanMove = true;
 		}
 	}
 
-	private Transform FindOtherDeskPoint()
+	private void SpawnAI()
 	{
-		if(gameManager != null && gameManager.deskPoints.Count > 0)
+		if(virtualPlayerPrefab != null && UIManager.Instance.MeetingsAttendedByAI != 0 && debugAction.WasPerformedThisFrame()) 
 		{
-			foreach(Transform deskPoint in gameManager.deskPoints)
+			for(int i = 0; i < UIManager.Instance.MeetingsAttendedByAI;  i++) 
 			{
-				if(deskPoint != interactionPoint)
-				{
-					return deskPoint;
-				}
+				Instantiate(virtualPlayerPrefab, Vector3.zero, Quaternion.identity);
 			}
-		}
-		return null;
-	}
-
-	public void SetInteractionActive(bool isActive, Transform deskPoint)
-	{
-		interactionAvailable = isActive;
-		if(deskPoint != null ) 
-		{
-			this.interactionPoint = deskPoint;
-		}
-		else
-		{
-			this.interactionPoint = null;
 		}
 	}
 }

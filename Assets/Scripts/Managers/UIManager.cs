@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 	public static UIManager Instance;
 	[SerializeField] private PlayerInteraction playerInteraction;
 
-	[Header("UI references")]
+	[Header("TAB UI references")]
 	[SerializeField] private GameObject TabPanel;
 	[SerializeField] private GameObject WelcomeText;
 	[SerializeField] private GameObject meetingsPanel;
@@ -19,7 +19,10 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameObject PresenterPanel;
 	[SerializeField] private GameObject AttendeePanel;
 
-	public int meetingsAttendedByAI{get; private set;}
+	[Header("Other UI references")]
+	[SerializeField] GameObject canInteractPanel;
+
+	public int MeetingsAttendedByAI{get; private set;}
 	public List<GameObject> AIAttendedMeetingsText = new List<GameObject>();
 	public List<GameObject> AIAttendedMeetingsButtons = new List<GameObject>();
 	private bool hasStarted;
@@ -35,30 +38,49 @@ public class UIManager : MonoBehaviour
 	private void Start()
 	{
 		TabPanel.SetActive(false);
+		canInteractPanel.SetActive(false);
 	}
 
 	private void Update()
 	{
 		TabEnableCheck();
+		OnInteractCheck();
 	}
 
 	private void TabEnableCheck()
 	{
 		if(playerInteraction != null) 
 		{
-			if(playerInteraction.TabActive)
-			{
-				EnableObject(TabPanel);
-				WelcomeTextCycle();
-			}
-			else if(!playerInteraction.TabActive)
-			{
-				DisableObject(TabPanel);
-				DisableObject(meetingsPanel);
-				DisableObject(AIMeetingsEditSelectPanel);
-				DisableObject(EditPanel);
-				hasStarted = false;
-			}
+			OnTabCheck();
+		}
+	}
+
+	private void OnInteractCheck()
+	{
+		if(playerInteraction.InteractionAvailable) 
+		{
+			canInteractPanel.SetActive(true);
+		}
+		else
+		{
+			canInteractPanel.SetActive(false);
+		}
+	}
+
+	private void OnTabCheck()
+	{
+		if (playerInteraction.TabActive)
+		{
+			EnableObject(TabPanel);
+			WelcomeTextCycle();
+		}
+		else if (!playerInteraction.TabActive)
+		{
+			DisableObject(TabPanel);
+			DisableObject(meetingsPanel);
+			DisableObject(AIMeetingsEditSelectPanel);
+			DisableObject(EditPanel);
+			hasStarted = false;
 		}
 	}
 
@@ -89,7 +111,7 @@ public class UIManager : MonoBehaviour
 
 	public void AssignAI()
 	{
-		meetingsAttendedByAI++;
+		MeetingsAttendedByAI++;
 	}
 	public void EditAIMeetingsList()
 	{
@@ -108,7 +130,7 @@ public class UIManager : MonoBehaviour
 		}
 
 		// Enable the necessary number of meetingTexts and meetingButtons based on meetingsAttendedByAI
-		for (int i = 0; i < meetingsAttendedByAI; i++)
+		for (int i = 0; i < MeetingsAttendedByAI; i++)
 		{
 			AIAttendedMeetingsText[i].SetActive(true);
 			AIAttendedMeetingsButtons[i].SetActive(true);
