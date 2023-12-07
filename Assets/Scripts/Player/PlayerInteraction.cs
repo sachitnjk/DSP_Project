@@ -77,7 +77,6 @@ public class PlayerInteraction : MonoBehaviour
 		if(interactionAvailable && interactionAction.triggered && !interactionActive && !TabActive)
 		{
 			interactionActive = true;
-			//playerMove.CanMove = false;
 			transform.position = Vector3.Lerp(transform.position, interactionPoint.position, 2f);
 
 			otherDeskPoint = FindOtherDeskPoint();
@@ -88,7 +87,6 @@ public class PlayerInteraction : MonoBehaviour
 		}
 		else if(interactionActive && interactionAction.triggered)
 		{
-			//playerMove.CanMove = true;
 			interactionActive = false;
 
 			if(virtualPlayerInstance != null) 
