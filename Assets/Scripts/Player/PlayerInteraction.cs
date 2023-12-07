@@ -11,15 +11,15 @@ public class PlayerInteraction : MonoBehaviour
 	private InputAction debugAction;
 
 	[SerializeField] private PlayerCameraFP playerCamera;
-	[SerializeField] GameObject virtualPlayerPrefab;
 
 	private PlayerMovementFP playerMove;
 	private GameManager gameManager;
 
-
 	public bool InteractionAvailable { get; set; }
 	public bool TabActive { get; private set; }
 	private bool interactionActive;
+
+	private int numberOfAI;
 
 	private void Start()
 	{
@@ -86,12 +86,25 @@ public class PlayerInteraction : MonoBehaviour
 
 	private void SpawnAI()
 	{
-		if(virtualPlayerPrefab != null && UIManager.Instance.MeetingsAttendedByAI != 0 && debugAction.WasPerformedThisFrame()) 
+		if(UIManager.Instance.MeetingsAttendedByAI != 0 && debugAction.WasPerformedThisFrame()) 
 		{
-			for(int i = 0; i < UIManager.Instance.MeetingsAttendedByAI;  i++) 
-			{
-				Instantiate(virtualPlayerPrefab, Vector3.zero, Quaternion.identity);
-			}
+			int numberOfAI = UIManager.Instance.MeetingsAttendedByAI;
+
+			// Ensure that the number of AI doesn't exceed the available virtual players
+			numberOfAI = Mathf.Min(numberOfAI, gameManager.virtualPlayers.Count);
+
+			StartCoroutine(SpawnAICoroutine(numberOfAI));
+		}
+	}
+	private IEnumerator SpawnAICoroutine(int numberOfAI)
+	{
+		for (int i = 0; i < gameManager.virtualPlayers.Count; i++)
+		{
+			bool activateAI = i < numberOfAI;
+
+			yield return new WaitForSeconds(1f);
+
+			gameManager.virtualPlayers[i].SetActive(activateAI);
 		}
 	}
 }

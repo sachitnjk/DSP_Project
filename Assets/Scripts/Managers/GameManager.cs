@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance;
 
 	public List<GameObject> deskPoints;
+	public List<GameObject> virtualPlayers;
 
 	private void Awake()
 	{

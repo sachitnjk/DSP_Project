@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeskPointManager : MonoBehaviour
+public class DeskPointController : MonoBehaviour
 {
 	public bool isOccupied {  get; set; }
 
