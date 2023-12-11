@@ -4524,7 +4524,7 @@ PrefabInstance:
     - target: {fileID: 6962156826299170979, guid: b2d52ad3da4290941a7402c778c57f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1525109252}
     - target: {fileID: 6962156826299170979, guid: b2d52ad3da4290941a7402c778c57f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DisableOtherObject
@@ -4660,7 +4660,7 @@ PrefabInstance:
     - target: {fileID: 6962156826957660293, guid: b2d52ad3da4290941a7402c778c57f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1525109252}
     - target: {fileID: 6962156826957660293, guid: b2d52ad3da4290941a7402c778c57f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: EnableOtherObject
@@ -4700,7 +4700,7 @@ PrefabInstance:
     - target: {fileID: 6962156827269073927, guid: b2d52ad3da4290941a7402c778c57f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1525109252}
     - target: {fileID: 6962156827269073927, guid: b2d52ad3da4290941a7402c778c57f86, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: DisableOtherObject
